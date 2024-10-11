@@ -23,6 +23,12 @@ jobs:
       - name: Build
         run: hugo --minify	# 使用hugo构建静态网页
 
+      - name: Bind Donate # 为github pages绑定自定义域名
+        run: |
+          cd ./public
+          echo 'www.jehol-ppx.com' > CNAME	# 为github pages绑定自定义域名
+          cd ..
+
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3	# 一个自动发布github pages的action
         with:
