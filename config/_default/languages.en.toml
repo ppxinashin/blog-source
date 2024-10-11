@@ -1,18 +1,18 @@
 disabled = false
-languageCode = "zh"
-languageName = "中文"
+languageCode = "en"
+languageName = "English"
 weight = 1
-title = "热河fen青"
+title = "Blowfish"
 
 [params]
-  displayName = "简体中文"
-  isoCode = "zh"
+  displayName = "EN"
+  isoCode = "en"
   rtl = false
-  dateFormat = "2006-01-02"
+  dateFormat = "2 January 2006"
   # logo = "img/logo.png"
   # secondaryLogo = "img/secondary-logo.png"
   # description = "My awesome website"
-  copyright = "网站注册备案号：[冀ICP备2022002900号-1](https://beian.miit.gov.cn/)"
+  copyright = "Website Registration and Filing Number: [冀ICP备2022002900号-1](https://beian.miit.gov.cn/)"
 
 # [params.author]
 #   name = "Your name here"
