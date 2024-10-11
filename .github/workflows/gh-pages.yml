@@ -21,7 +21,7 @@ jobs:
           # extended: true
 
       - name: Build
-        run: hugo --minify	# 使用hugo构建静态网页
+        run: hugo --minify && echo 'www.jehol-ppx.com' > ./public/CNAME	# 使用hugo构建静态网页
 
       - name: Bind Donate # 为github pages绑定自定义域名
         run: |
