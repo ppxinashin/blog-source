@@ -1,8 +1,9 @@
 +++
 title = '第二章-开始Golang学习'
 date = 2024-10-11T22:11:37+08:00
-draft = true
+draft = false
 +++
+
 # 1. 环境安装
 
 安装Go语言环境在Windows，Linux和Mac上的步骤略有不同。以下是各个操作系统的安装过程：
@@ -20,21 +21,21 @@ go version
 2. 访问Go官方网站（https://golang.org/dl/），并下载所需版本的Go安装程序或安装包。选择与你的操作系统和架构相对应的版本。
 3. 安装所下载的Go版本。根据你的操作系统，有以下几种安装方法：
 
-- **Windows**: 双击下载的安装程序并按照提示完成安装过程。默认情况下，Go将安装在`C:\Go`目录下。
-- **Linux**: 解压下载的安装包到你选择的目录。例如，可以将其解压到`/usr/local`目录下：
+- **Windows**: 双击下载的安装程序并按照提示完成安装过程。默认情况下，Go将安装在 `C:\Go`目录下。
+- **Linux**: 解压下载的安装包到你选择的目录。例如，可以将其解压到 `/usr/local`目录下：
 
 ```
 tar -C /usr/local -xzf go1.19.linux-amd64.tar.gz
 ```
 
-注意将`go1.19.linux-amd64.tar.gz`替换成你下载的安装包的实际文件名。
+注意将 `go1.19.linux-amd64.tar.gz`替换成你下载的安装包的实际文件名。
 
-- **Mac**: 双击下载的安装包并按照提示完成安装过程。默认情况下，Go将安装在`/usr/local/go`目录下。
+- **Mac**: 双击下载的安装包并按照提示完成安装过程。默认情况下，Go将安装在 `/usr/local/go`目录下。
 
 4. 现在，你需要使用环境变量来设置Go的版本和路径。打开你的终端，并执行以下命令：
 
-- **Windows**: 在`系统属性 -> 高级 -> 环境变量`中，添加一个名为`GOROOT`的变量，并将其值设置为Go的安装路径（例如`C:\Go`）。然后，在`Path`变量中添加`%GOROOT%\bin`。
-- **Linux和Mac**: 使用文本编辑器打开你的`~/.profile`文件或者`~/.bashrc`文件，并添加以下内容：
+- **Windows**: 在 `系统属性 -> 高级 -> 环境变量`中，添加一个名为 `GOROOT`的变量，并将其值设置为Go的安装路径（例如 `C:\Go`）。然后，在 `Path`变量中添加 `%GOROOT%\bin`。
+- **Linux和Mac**: 使用文本编辑器打开你的 `~/.profile`文件或者 `~/.bashrc`文件，并添加以下内容：
 
 ```
 export GOROOT=/usr/local/go
@@ -114,7 +115,7 @@ total 3784
 -rw-r--r--@ 1 jeholppx  staff    74B Jul  9 11:05 hello_world.go
 ```
 
-只要执行这个`hello_world`就可以打印上面的结果
+只要执行这个 `hello_world`就可以打印上面的结果
 
 ## 2.3 基本程序结构
 
@@ -133,13 +134,13 @@ func main() {
 
 例程中helloworld是应用程序的入口，作为入口，有以下的基本要求
 
-- 必须是main包/模块，声明为`package main`，目录名不一定为`main`
+- 必须是main包/模块，声明为 `package main`，目录名不一定为 `main`
 - 必须是main方法 `func main()`
-- 文件名不一定写`main.go`，也可以是其他名字
+- 文件名不一定写 `main.go`，也可以是其他名字
 
 ### 2.4.1 实验
 
-新建一个文件夹，拷贝源码，并执行`go run`
+新建一个文件夹，拷贝源码，并执行 `go run`
 
 ```
 # 回到上一级目录
@@ -186,7 +187,7 @@ C(++)/Java中：有指定的返回值
 Go语言中
 
 - `main()`不支持任何返回值
-- 通过`os.Exit`来返回状态
+- 通过 `os.Exit`来返回状态
 
 加返回值实验如下
 
@@ -255,7 +256,7 @@ C++/Java 可以在main函数传参，args string[] 类型
 Go不可以这样做
 
 - `main()`本身就不支持传参
-- 需要通过`os.Args()`获取参数
+- 需要通过 `os.Args()`获取参数
 
 程序实例如下
 
