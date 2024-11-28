@@ -67,3 +67,42 @@
 #   name = "Categories"
 #   pageRef = "categories"
 #   weight = 20
+
+# -- Main Menu --
+# -- Go Menu --
+[[main]]
+  name = "Go"
+  weight = 10
+
+[[main]]
+  name = "Go语言基础"
+  parent = "Go"
+  pre = "golang"
+  pageRef = "golang-basic"
+  weight = 10
+
+[[main]]
+  name = "面经"
+  parent = "Go"
+  pre = "golang"
+  pageRef = "interview"
+  weight = 10
+
+# -- Java Menu --
+[[main]]
+  name = "Java"
+  weight = 10
+
+[[main]]
+  name = "Spring Cloud"
+  parent = "Java"
+  pre = "java"
+  pageRef = "spring-cloud"
+  weight = 10
+
+[[main]]
+  name = "面经"
+  parent = "Java"
+  pre = "java"
+  pageRef = "interview"
+  weight = 10
