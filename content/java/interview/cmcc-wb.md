@@ -23,4 +23,4 @@ draft = false
 - 配置Gateway的方法：yaml，必要三个条件：服务名称、端口号和api前缀
 - 已知如果需要动态配置，除了环境变量手段以外，如何用Nacos实现这个过程？
     - 参考1：[Nacos自定义环境变量](https://nacos.io/docs/v3.0/plugin/custom-environment-plugin/)
-    - 参考2：[Nacos 配置统一管理、热部署、多环境配置共享](https://blog.csdn.net/CYK_byte/article/details/131445399?spm=1001.2101.3001.6661.1&utm_medium=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7EOPENSEARCH%7EPaidSort-1-131445399-blog-120451801.235%5Ev43%5Epc_blog_bottom_relevance_base4&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7EOPENSEARCH%7EPaidSort-1-131445399-blog-120451801.235%5Ev43%5Epc_blog_bottom_relevance_base4&utm_relevant_index=1)
+    - 参考2：[Nacos 配置中心用法](https://blog.csdn.net/a745233700/article/details/122916208)
