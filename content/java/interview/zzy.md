@@ -25,6 +25,112 @@ draft = false
 
 ## 5. **加密机制**：
 ### 对controller返回值进行加密的方法有哪些？
+要在Spring Boot启动后立即对controller返回值进行加密，可以使用拦截器或过滤器来实现。以下是使用过滤器的示例：
+
+1. **创建加密工具类**：
+   ```java
+   import javax.crypto.Cipher;
+   import javax.crypto.spec.SecretKeySpec;
+   import java.util.Base64;
+
+   public class EncryptionUtil {
+       private static final String KEY = "1234567890123456"; // 16-byte key
+
+       public static String encrypt(String data) throws Exception {
+           SecretKeySpec secretKey = new SecretKeySpec(KEY.getBytes(), "AES");
+           Cipher cipher = Cipher.getInstance("AES");
+           cipher.init(Cipher.ENCRYPT_MODE, secretKey);
+           byte[] encryptedData = cipher.doFinal(data.getBytes());
+           return Base64.getEncoder().encodeToString(encryptedData);
+       }
+   }
+   ```
+
+2. **创建过滤器**：
+   ```java
+   import org.springframework.stereotype.Component;
+
+   import javax.servlet.Filter;
+   import javax.servlet.FilterChain;
+   import javax.servlet.FilterConfig;
+   import javax.servlet.ServletException;
+   import javax.servlet.ServletRequest;
+   import javax.servlet.ServletResponse;
+   import javax.servlet.http.HttpServletResponse;
+   import java.io.IOException;
+
+   @Component
+   public class EncryptionFilter implements Filter {
+
+       @Override
+       public void init(FilterConfig filterConfig) throws ServletException {
+           // 初始化
+       }
+
+       @Override
+       public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+               throws IOException, ServletException {
+           EncryptionResponseWrapper responseWrapper = new EncryptionResponseWrapper((HttpServletResponse) response);
+           chain.doFilter(request, responseWrapper);
+           String originalContent = new String(responseWrapper.getDataStream());
+           try {
+               String encryptedContent = EncryptionUtil.encrypt(originalContent);
+               response.getOutputStream().write(encryptedContent.getBytes());
+           } catch (Exception e) {
+               throw new ServletException("加密失败", e);
+           }
+       }
+
+       @Override
+       public void destroy() {
+           // 销毁
+       }
+   }
+   ```
+
+3. **创建响应包装类**：
+   ```java
+   import javax.servlet.ServletOutputStream;
+   import javax.servlet.http.HttpServletResponse;
+   import javax.servlet.http.HttpServletResponseWrapper;
+   import java.io.ByteArrayOutputStream;
+   import java.io.IOException;
+   import java.io.PrintWriter;
+
+   public class EncryptionResponseWrapper extends HttpServletResponseWrapper {
+       private ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+       private PrintWriter writer = new PrintWriter(outputStream);
+
+       public EncryptionResponseWrapper(HttpServletResponse response) {
+           super(response);
+       }
+
+       @Override
+       public ServletOutputStream getOutputStream() throws IOException {
+           return new ServletOutputStream() {
+               @Override
+               public void write(int b) throws IOException {
+                   outputStream.write(b);
+               }
+           };
+       }
+
+       @Override
+       public PrintWriter getWriter() throws IOException {
+           return writer;
+       }
+
+       public byte[] getDataStream() {
+           writer.flush();
+           return outputStream.toByteArray();
+       }
+   }
+   ```
+
+4. **配置过滤器**：
+   确保Spring Boot应用程序能够扫描到过滤器组件，可以在`@SpringBootApplication`类所在包或其子包中放置过滤器类，Spring Boot会自动扫描并注册过滤器。
+
+这样，当Spring Boot应用程序启动后，所有controller返回的内容都会通过过滤器进行加密。
 
 ## 6. **事务管理**：
 ### @Transactional注解在什么情况下会失效？
