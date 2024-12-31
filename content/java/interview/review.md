@@ -330,3 +330,8 @@ draft = false
 ## 5.3 涨薪谈判
 
 - [面试到了谈薪环节，这么谈薪，工资至少可多涨10%！高于预期](https://baijiahao.baidu.com/s?id=1801208349388425074)
+
+# 6. 复习提纲
+
+- [面试鸭八股文扩展](https://gitee.com/ppx_ashin/java-8gu-wiki/wikis)
+
