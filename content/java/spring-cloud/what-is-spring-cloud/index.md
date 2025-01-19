@@ -82,7 +82,7 @@ draft = false
 
 本质：是在 Spring Cloud 的基础上，进行了增强，补充了一些额外的能力，根据阿里多年的业务沉淀做了一些定制化的开发
 
-![1729913976715](image/what-is-spring-cloud/1729913976715.png)
+![1729913976715](img/1729913976715.png)
 
 这张图展示了Spring Cloud Alibaba与Spring Cloud的关系，并且详细列出了Spring Cloud Alibaba中的一些核心组件。以下是关于Spring Cloud标准实现和开源产品的详细介绍：
 
