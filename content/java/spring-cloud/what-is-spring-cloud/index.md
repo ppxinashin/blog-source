@@ -1,5 +1,6 @@
 +++
 title = '微服务简介'
+description = '介绍微服务、Spring Cloud 与 Spring Cloud Alibaba 的定位和适用场景。'
 date = 2024-10-26T12:37:45+08:00
 draft = false
 +++

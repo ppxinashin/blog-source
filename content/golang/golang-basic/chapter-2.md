@@ -1,5 +1,6 @@
 +++
 title = '第二章-开始Golang学习'
+description = '从开发环境安装到 Hello World，介绍 Go 程序结构、编译运行和 main 函数。'
 date = 2024-10-11T22:11:37+08:00
 draft = false
 +++

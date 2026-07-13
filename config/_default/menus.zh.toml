@@ -72,37 +72,41 @@
 # -- Go Menu --
 [[main]]
   name = "Go"
+  pageRef = "/golang"
   weight = 10
 
 [[main]]
   name = "Go语言基础"
   parent = "Go"
   pre = "golang"
-  pageRef = "golang-basic"
+  pageRef = "/golang/golang-basic"
   weight = 10
 
 [[main]]
   name = "面经"
+  identifier = "go-interview"
   parent = "Go"
   pre = "golang"
-  pageRef = "interview"
+  pageRef = "/golang/interview"
   weight = 10
 
 # -- Java Menu --
 [[main]]
   name = "Java"
+  pageRef = "/java"
   weight = 10
 
 [[main]]
   name = "Spring Cloud"
   parent = "Java"
   pre = "java"
-  pageRef = "spring-cloud"
+  pageRef = "/java/spring-cloud"
   weight = 10
 
 [[main]]
   name = "面经"
+  identifier = "java-interview"
   parent = "Java"
   pre = "java"
-  pageRef = "interview"
+  pageRef = "/java/interview"
   weight = 10

@@ -1,5 +1,6 @@
 +++
 title = '初始化一个Spring Cloud'
+description = '以 Spring Cloud Alibaba 2021.0.5.0 为例搭建微服务项目并接入 Nacos。'
 date = 2024-10-26T12:51:36+08:00
 draft = false
 +++

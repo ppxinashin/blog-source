@@ -1,5 +1,6 @@
 +++
 title = '第一章-Golang简介'
+description = '介绍 Go 语言的版本演进、并发、内存管理、编译与网络编程等核心特性。'
 date = 2024-10-11T21:59:24+08:00
 draft = false
 tags = ["Go", "Golang", "基础"]

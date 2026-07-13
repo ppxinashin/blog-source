@@ -1,0 +1,57 @@
+{{ $authorImage := resources.Get .Site.Params.Author.image }}
+{{ $goPages := where .Site.RegularPages "Section" "golang" }}
+{{ $javaPages := where .Site.RegularPages "Section" "java" }}
+{{ $articles := where .Site.RegularPages "Type" "in" .Site.Params.mainSections }}
+
+<div class="jehol-home">
+  <section class="jehol-hero" aria-labelledby="jehol-home-title">
+    <p class="jehol-kicker">BACKEND NOTES · GO / JAVA</p>
+    {{ with $authorImage }}
+      <img class="jehol-avatar nozoom" src="{{ .RelPermalink }}" width="210" height="210" alt="{{ $.Site.Params.Author.name }}">
+    {{ end }}
+    <h1 id="jehol-home-title">{{ .Site.Params.Author.name | default .Site.Title }}</h1>
+    <p class="jehol-headline">{{ .Site.Params.Author.headline | markdownify }}</p>
+    <p class="jehol-intro">{{ .Site.Params.description }}</p>
+    <div class="jehol-socials" aria-label="社交链接">{{ partialCached "author-links.html" . }}</div>
+    <nav class="jehol-quicklinks" aria-label="内容入口">
+      <a href="{{ "/golang/" | relLangURL }}">Go 笔记</a>
+      <a href="{{ "/java/" | relLangURL }}">Java 专栏</a>
+      <a href="#recent">最近更新</a>
+    </nav>
+  </section>
+
+  <section class="jehol-topics" aria-labelledby="topics-title">
+    <div class="jehol-section-heading">
+      <div><p class="jehol-section-label">TOPICS</p><h2 id="topics-title">持续整理的技术主题</h2></div>
+      <p>从语言基础到工程实践，也保留真实的面试复盘。</p>
+    </div>
+    <div class="jehol-topic-grid">
+      <a class="jehol-topic jehol-topic--go" href="{{ "/golang/" | relLangURL }}">
+        <span class="jehol-topic-index">01</span>
+        <span class="jehol-topic-body"><strong>Go</strong><span>语言基础、并发模型与开发实践</span></span>
+        <span class="jehol-topic-count">{{ len $goPages }} 篇</span>
+      </a>
+      <a class="jehol-topic jehol-topic--java" href="{{ "/java/" | relLangURL }}">
+        <span class="jehol-topic-index">02</span>
+        <span class="jehol-topic-body"><strong>Java</strong><span>Spring Cloud、后端工程与面试记录</span></span>
+        <span class="jehol-topic-count">{{ len $javaPages }} 篇</span>
+      </a>
+    </div>
+  </section>
+
+  <section id="recent" class="jehol-recent" aria-labelledby="recent-title">
+    <div class="jehol-section-heading">
+      <div><p class="jehol-section-label">RECENT</p><h2 id="recent-title">最近更新</h2></div>
+      <p>{{ len $articles }} 篇公开文章，按更新时间排列。</p>
+    </div>
+    <div class="jehol-article-list">
+      {{ range first 6 $articles.ByDate.Reverse }}
+        <article class="jehol-article-row">
+          <div class="jehol-article-meta"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time><span>{{ cond (eq .Section "golang") "Go" "Java" }}</span></div>
+          <div class="jehol-article-copy"><h3><a href="{{ .RelPermalink }}">{{ .Title | emojify }}</a></h3><p>{{ .Params.description | default (.Summary | plainify) }}</p></div>
+          <a class="jehol-article-arrow" href="{{ .RelPermalink }}" aria-label="阅读《{{ .Title }}》">→</a>
+        </article>
+      {{ end }}
+    </div>
+  </section>
+</div>

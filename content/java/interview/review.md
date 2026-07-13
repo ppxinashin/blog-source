@@ -1,5 +1,6 @@
 +++
 title = '复盘与复习'
+description = '整理 Java 后端面试的知识清单、项目复盘、算法题与 HR 常见问题。'
 date = 2024-12-30T09:56:30+08:00
 draft = false
 +++
@@ -334,4 +335,3 @@ draft = false
 # 6. 复习提纲
 
 - [面试鸭八股文扩展](https://gitee.com/ppx_ashin/java-8gu-wiki/wikis)
-
