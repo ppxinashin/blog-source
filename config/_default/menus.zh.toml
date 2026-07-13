@@ -94,7 +94,7 @@
 [[main]]
   name = "Java"
   pageRef = "/java"
-  weight = 10
+  weight = 20
 
 [[main]]
   name = "Spring Cloud"
@@ -109,4 +109,17 @@
   parent = "Java"
   pre = "java"
   pageRef = "/java/interview"
+  weight = 10
+
+# -- LLM Development Menu --
+[[main]]
+  name = "大模型开发"
+  pageRef = "/llm-dev"
+  weight = 30
+
+[[main]]
+  name = "Agent"
+  parent = "大模型开发"
+  pre = "wand-magic-sparkles"
+  pageRef = "/llm-dev/agent"
   weight = 10

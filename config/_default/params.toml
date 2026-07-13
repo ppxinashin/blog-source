@@ -14,7 +14,7 @@ enableCodeCopy = true
 
 replyByEmail = false
 
-mainSections = ["golang", "java"]
+mainSections = ["golang", "java", "llm-dev"]
 # robots = ""
 
 disableImageOptimization = false

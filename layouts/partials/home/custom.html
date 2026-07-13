@@ -1,11 +1,12 @@
 {{ $authorImage := resources.Get .Site.Params.Author.image }}
 {{ $goPages := where .Site.RegularPages "Section" "golang" }}
 {{ $javaPages := where .Site.RegularPages "Section" "java" }}
+{{ $llmPages := where .Site.RegularPages "Section" "llm-dev" }}
 {{ $articles := where .Site.RegularPages "Type" "in" .Site.Params.mainSections }}
 
 <div class="jehol-home">
   <section class="jehol-hero" aria-labelledby="jehol-home-title">
-    <p class="jehol-kicker">BACKEND NOTES · GO / JAVA</p>
+    <p class="jehol-kicker">BACKEND NOTES · GO / JAVA / AI</p>
     {{ with $authorImage }}
       <img class="jehol-avatar nozoom" src="{{ .RelPermalink }}" width="210" height="210" alt="{{ $.Site.Params.Author.name }}">
     {{ end }}
@@ -16,6 +17,7 @@
     <nav class="jehol-quicklinks" aria-label="内容入口">
       <a href="{{ "/golang/" | relLangURL }}">Go 笔记</a>
       <a href="{{ "/java/" | relLangURL }}">Java 专栏</a>
+      <a href="{{ "/llm-dev/" | relLangURL }}">大模型开发</a>
       <a href="#recent">最近更新</a>
     </nav>
   </section>
@@ -23,7 +25,7 @@
   <section class="jehol-topics" aria-labelledby="topics-title">
     <div class="jehol-section-heading">
       <div><p class="jehol-section-label">TOPICS</p><h2 id="topics-title">持续整理的技术主题</h2></div>
-      <p>从语言基础到工程实践，也保留真实的面试复盘。</p>
+      <p>从语言基础到工程实践，也记录大模型开发与 Agent 系统的长期观察。</p>
     </div>
     <div class="jehol-topic-grid">
       <a class="jehol-topic jehol-topic--go" href="{{ "/golang/" | relLangURL }}">
@@ -36,6 +38,11 @@
         <span class="jehol-topic-body"><strong>Java</strong><span>Spring Cloud、后端工程与面试记录</span></span>
         <span class="jehol-topic-count">{{ len $javaPages }} 篇</span>
       </a>
+      <a class="jehol-topic jehol-topic--llm" href="{{ "/llm-dev/" | relLangURL }}">
+        <span class="jehol-topic-index">03</span>
+        <span class="jehol-topic-body"><strong>大模型开发</strong><span>Agent、上下文工程与 AI 工具实践</span></span>
+        <span class="jehol-topic-count">{{ len $llmPages }} 篇</span>
+      </a>
     </div>
   </section>
 
@@ -47,7 +54,7 @@
     <div class="jehol-article-list">
       {{ range first 6 $articles.ByDate.Reverse }}
         <article class="jehol-article-row">
-          <div class="jehol-article-meta"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time><span>{{ cond (eq .Section "golang") "Go" "Java" }}</span></div>
+          <div class="jehol-article-meta"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time><span>{{ if eq .Section "golang" }}Go{{ else if eq .Section "java" }}Java{{ else if eq .Section "llm-dev" }}AI{{ else }}{{ .Section }}{{ end }}</span></div>
           <div class="jehol-article-copy"><h3><a href="{{ .RelPermalink }}">{{ .Title | emojify }}</a></h3><p>{{ .Params.description | default (.Summary | plainify) }}</p></div>
           <a class="jehol-article-arrow" href="{{ .RelPermalink }}" aria-label="阅读《{{ .Title }}》">→</a>
         </article>

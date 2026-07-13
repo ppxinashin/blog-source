@@ -1,0 +1,12 @@
+{{ $hasMermaidCodeblock := in .Content "class=\"mermaid\"" }}
+{{ if and $hasMermaidCodeblock (not (.Page.HasShortcode "mermaid")) }}
+  {{ $mermaidLib := resources.Get "lib/mermaid/mermaid.min.js" }}
+  {{ $mermaidConfig := resources.Get "js/mermaid.js" | resources.Minify }}
+  {{ $mermaidJS := slice $mermaidLib $mermaidConfig | resources.Concat "js/mermaid.bundle.js" | resources.Fingerprint (.Site.Params.fingerprintAlgorithm | default "sha512") }}
+  <script
+    defer
+    type="text/javascript"
+    src="{{ $mermaidJS.RelPermalink }}"
+    integrity="{{ $mermaidJS.Data.Integrity }}"></script>
+{{ end }}
+
